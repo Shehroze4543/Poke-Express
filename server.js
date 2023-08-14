@@ -1,7 +1,7 @@
 const express = require("express");
 // Create our express app
 const app = express();
-const port = 3025;
+const port = 3026;
 
 const pokemon = require("./models/pokemon.js");
 
@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/pokemon", (req, res) => {
-  res.render("Index");
+  res.render("Index", { pokemon: pokemon });
 });
 
 app.listen(port, function () {
