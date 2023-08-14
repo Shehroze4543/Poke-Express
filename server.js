@@ -1,7 +1,7 @@
 const express = require("express");
 // Create our express app
 const app = express();
-const port = 3026;
+const port = 3060;
 
 const pokemon = require("./models/pokemon.js");
 
@@ -21,7 +21,7 @@ app.get("/pokemon", (req, res) => {
 });
 
 app.get("/pokemon/:id", (req, res) => {
-  res.send(req.params.id);
+  res.render("Show", { pokemon: pokemon[req.params.id] });
 });
 app.listen(port, function () {
   console.log(`Listening on ${port}`);

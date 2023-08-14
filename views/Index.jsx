@@ -10,11 +10,17 @@ function Index(props) {
     <>
       <h1 style={myStyle}>See All The PokeMon</h1>
       <p>
-        {pokemon.map((pokemon) => {
+        {pokemon.map((pokemon, i) => {
           const capitalizedFirst = pokemon.name.charAt(0).toUpperCase();
           const rest_of_the_name =
             capitalizedFirst + pokemon.name.slice(1).toLowerCase();
-          return <p>{rest_of_the_name}</p>;
+          return (
+            <div key={i}>
+              <h2>
+                <a href={`/pokemon/${i}`}>{rest_of_the_name}</a>
+              </h2>
+            </div>
+          );
         })}
       </p>
     </>
