@@ -9,6 +9,9 @@ function Index(props) {
   return (
     <>
       <h1 style={myStyle}>See All The PokeMon</h1>
+      <nav>
+        <a href="pokemon/new">Add New Pokemon</a>
+      </nav>
       <p>
         {pokemon.map((pokemon, i) => {
           const capitalizedFirst = pokemon.name.charAt(0).toUpperCase();
@@ -17,8 +20,17 @@ function Index(props) {
           return (
             <div key={i}>
               <h2>
-                <a href={`/pokemon/${i}`}>{rest_of_the_name}</a>
+                <a href={`/pokemon/${pokemon._id}`}>{rest_of_the_name}</a>
               </h2>
+              <p>
+                <a href={`/pokemon/${pokemon._id}/edit`}>Edit Pokemon's Info</a>
+              </p>
+              <form
+                action={`/pokemon/${pokemon._id}?_method=DELETE`}
+                method="POST"
+              >
+                <input type="submit" value="Delete" />
+              </form>
             </div>
           );
         })}
